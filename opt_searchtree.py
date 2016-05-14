@@ -23,7 +23,7 @@ def eij_func(i,j,eij_array):
         if minimum == 0 or minimum > wert:
             minimum = wert
             root = r
-    return (minimum,root)as
+    return (minimum,root)
 
 try:
     keys = raw_input("Keys (ex. [1,2,3,4,5]): ")
