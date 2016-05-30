@@ -3,14 +3,6 @@ import sys
 import math
 from tabulate import tabulate
 
-def truncate_float(f, n):
-    '''Truncates/pads a float f to n decimal places without rounding'''
-    s = '{}'.format(f)
-    if 'e' in s or 'E' in s:
-        return '{0:.{1}f}'.format(f, n)
-    i, p, d = s.partition('.')
-    return '.'.join([i, (d+'0'*n)[:n]])
-
 def eij_func(i,j,eij_array):
     minimum = 0
     root = 0
@@ -47,7 +39,7 @@ if len(keys) != len(probs):
     sys.exit(1)
 
 if all(isinstance(prob, float) for prob in probs):
-   if float(truncate_float(sum(probs),1) ) != 1.0:
+   if math.fsum(probs) != 1.0:
        print("[X] Probabilities must sum up to 1.0.")
        sys.exit(1)
 else:
